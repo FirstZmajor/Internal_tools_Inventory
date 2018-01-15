@@ -17,12 +17,25 @@ class Site extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	// public function __construct()
-    // {
-  	// 	parent::__construct();
-  	// 	$this->_init_template();
-    //     $this->output->set_title('Contact - NTT Portal Service');
-	// }
+	function __construct()
+	{
+		parent::__construct();
+
+		$this->load->helper('url');
+
+		$this->_init();
+	}
+
+	private function _init()
+	{
+		$this->output->set_template('default');
+		$this->load->section('_navbar', 'themes/_navbar');
+		$this->load->section('_sidebar', 'themes/_sidebar');
+		$this->load->section('_footer', 'themes/_footer');
+		$this->load->js('assets/themes/node_modules/jquery/dist/jquery.js');
+		// $this->load->js('assets/themes/default/hero_files/bootstrap-transition.js');
+		// $this->load->js('assets/themes/default/hero_files/bootstrap-collapse.js');
+	}
 	
 	public function index()
 	{
