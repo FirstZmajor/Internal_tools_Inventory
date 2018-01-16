@@ -33,8 +33,17 @@ class Site extends CI_Controller {
 		$this->load->section('_sidebar', 'themes/_sidebar');
 		$this->load->section('_footer', 'themes/_footer');
 		$this->load->js('assets/themes/node_modules/jquery/dist/jquery.js');
-		// $this->load->js('assets/themes/default/hero_files/bootstrap-transition.js');
-		// $this->load->js('assets/themes/default/hero_files/bootstrap-collapse.js');
+		$this->load->js('assets/themes/node_modules/jquery/dist/jquery.min.js');
+		$this->load->js('assets/themes/node_modules/popper.js/dist/umd/popper.min.js');
+		$this->load->js('assets/themes/node_modules/bootstrap/dist/js/bootstrap.min.js');
+		$this->load->js('assets/themes/node_modules/chart.js/dist/Chart.min.js');
+		$this->load->js('assets/themes/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js');
+		$this->load->js('assets/themes/js/off-canvas.js');
+		$this->load->js('assets/themes/js/hoverable-collapse.js');
+		$this->load->js('assets/themes/js/misc.js');
+		$this->load->js('assets/themes/js/chart.js');
+		$this->load->js('assets/themes/js/maps.js');
+
 	}
 	
 	public function index()
