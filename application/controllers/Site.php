@@ -17,17 +17,50 @@ class Site extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	// public function __construct()
-    // {
-  	// 	parent::__construct();
-  	// 	$this->_init_template();
-    //     $this->output->set_title('Contact - NTT Portal Service');
-	// }
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->helper('url');
+		$this->_init();
+	}
+
+	private function _init()
+	{
+		$this->output->set_template('default');
+		$this->load->section('_navbar', 'themes/_navbar');
+		$this->load->section('_sidebar', 'themes/_sidebar');
+		$this->load->section('_footer', 'themes/_footer');
+		$this->load->js('assets/themes/node_modules/jquery/dist/jquery.js');
+		$this->load->js('assets/themes/node_modules/popper.js/dist/umd/popper.min.js');
+		$this->load->js('assets/themes/node_modules/bootstrap/dist/js/bootstrap.min.js');
+		$this->load->js('assets/themes/node_modules/chart.js/dist/Chart.min.js');
+		// $this->load->js('assets/themes/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.js');
+		// $this->load->js('assets/themes/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.js');
+		$this->load->js('assets/themes/js/off-canvas.js');
+		$this->load->js('assets/themes/js/hoverable-collapse.js');
+		$this->load->js('assets/themes/js/misc.js');
+		$this->load->js('assets/themes/js/chart.js');
+		$this->load->js('assets/themes/js/maps.js');
+
+	}
 	
 	public function index()
 	{
-		// $this->load->view('welcome_message');
+		$this->load->view('pages/mainpage');
+	}
 
-		$this->load->view('mainpage');
+	public function view_content($id=null)
+	{
+		$this->output->unset_template();
+		$data['id'] = $id;
+		// print_r($data);
+		$this->load->view('pages/content_item',$data);
+	}
+
+	
+	public function edit_content()
+	{
+		// $this->output->unset_template();
+		$this->load->view('pages/update_item');
 	}
 }
