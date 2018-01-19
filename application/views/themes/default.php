@@ -40,15 +40,18 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/themes/default/images/favicon.png" type="image/x-icon"/>
-	<meta property="og:image" content="<?php echo base_url(); ?>assets/themes/default/images/facebook-thumb.png"/>
-    <link rel="image_src" href="<?php echo base_url(); ?>assets/themes/default/images/facebook-thumb.png" />
+    <link rel="shortcut icon" href="<?php echo base_url('/assets/themes/default/images/favicon.png'); ?>" type="image/x-icon"/>
+    <meta property="og:image" content="<?php echo base_url('/assets/themes/default/images/facebook-thumb.png'); ?>"/>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Web Manage IE's Inventory</title>
+    <link rel="image_src" href="<?php echo base_url('/assets/themes/default/images/facebook-thumb.png'); ?>" />
     
     <?php echo link_tag('assets/themes/css/style.css'); ?>
     <?php echo link_tag('assets/themes/node_modules/bootstrap/dist/css/bootstrap.min.css'); ?>
-    
-	<style type="text/css">
-	</style>
+    <?php echo link_tag('assets/themes/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.css'); ?>
+
 
 </head>
 
