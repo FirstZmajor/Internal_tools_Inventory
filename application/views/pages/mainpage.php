@@ -34,7 +34,7 @@
                             <td>Pong Ju</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-outline-primary btn-sm view-item" data-id="1">View</button>
-                                <a href="#" class="btn btn-primary btn-sm">Manage</a>
+                                <a href="<?php echo site_url('Site/edit_content/1'); ?>" class="btn btn-primary btn-sm">Manage</a>
                             </td>
                         </tr>
                         <tr class="">
@@ -47,7 +47,7 @@
                             <td>Pong Ju</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-outline-primary btn-sm view-item" data-id="2">View</button>
-                                <a href="#" class="btn btn-primary btn-sm">Manage</a>
+                                <a href="<?php echo site_url('Site/edit_content/2'); ?>" class="btn btn-primary btn-sm">Manage</a>
                             </td>
                         </tr>
                     </tbody>
@@ -61,42 +61,20 @@
 </body>
 
 </html>
-
-    
-	<script src="<?php echo base_url('assets/themes/node_modules/jquery/dist/jquery.js');?>"></script>
-    <script src="<?php echo base_url('assets/themes/node_modules/popper.js/dist/umd/popper.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/themes/node_modules/bootstrap/dist/js/bootstrap.js');?>"></script>
-    <script src="<?php echo base_url('assets/themes/node_modules/chart.js/dist/Chart.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/themes/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/themes/js/off-canvas.js');?>"></script>
-    <script src="<?php echo base_url('assets/themes/js/hoverable-collapse.js');?>"></script>
-    <script src="<?php echo base_url('assets/themes/js/misc.js');?>"></script>
-    <script src="<?php echo base_url('assets/themes/js/chart.js');?>"></script>
-    <script src="<?php echo base_url('assets/themes/js/maps.js');?>"></script>
-
-    <script>
-        $(document).ready(function(){
-            // var url = "<?php echo site_url('Site/view_content');?>";
-            // jQuery('#modellink').click(function(e) {
-            //     $('.modal-container').load(url,function(result)
-            //     {
-            //         $('#myModal').modal({
-            //             show:true
-            //         });
-            //     });
-            // });
-            $(".view-item").click(function(){
-                console.log($(this).data('id'));
-                var item_id = $(this).data('id');
-                $.ajax({
-                    url: "<?php echo site_url('Site/view_content');?>/"+item_id,
-                    success: function(result){
-                        $(".modal-container").html(result);
-                        $('#myModal').modal({
-                            show:true
-                        });
-                }});
+<script>
+    $(document).ready(function(){
+        $(".view-item").click(function(){
+        console.log($(this).data('id'));
+        var item_id = $(this).data('id');
+        $.ajax({
+            url: "<?php echo site_url('Site/view_content');?>/"+item_id,
+            success: function(result){
+            $(".modal-container").html(result);
+            $('#myModal').modal({
+                show:true
             });
-            
+        }});
         });
-    </script>
+        
+    });
+</script>

@@ -58,9 +58,10 @@ class Site extends CI_Controller {
 	}
 
 	
-	public function edit_content()
+	public function edit_content($id)
 	{
 		// $this->output->unset_template();
-		$this->load->view('pages/update_item');
+		$data['id'] = $id;
+		$this->load->view('pages/update_item',$data);
 	}
 }
