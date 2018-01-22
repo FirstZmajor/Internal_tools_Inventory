@@ -72,11 +72,11 @@
     $(document).ready(function(){
         $('#example').DataTable({
           "paging": false,
-          dom:"<'row'<'col-sm-6 create-request export-request'l><'col-sm-6'f>>"
+          dom:"<'row'<'col-sm-6 create-item'l><'col-sm-6'f>>"
         });
         
-        var button_create = '<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Create request</a>'; 
-        $('.create-request').append(button_create);
+        var button_create = '<a href="<?php echo site_url('Site/create_content');?>" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Create item</a>'; 
+        $('.create-item').append(button_create);
 
         $(".view-item").click(function(){
         console.log($(this).data('id'));
