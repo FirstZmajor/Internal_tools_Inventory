@@ -1,0 +1,27 @@
+{
+  "name": "bower.json",
+  "authors": [
+    "Suphanan Yolao <suphanan.yo@ntt.co.th>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "datatables.net-bs4": "^3.2.2",
+    "datatables.net-fixedcolumns-dt": "^3.2.3",
+    "datatables.net-fixedcolumns": "^3.2.3",
+    "datatables.net-responsive-dt": "^2.2.0",
+    "datatables.net-responsive": "^2.2.0",
+    "datatables.net": "^1.10.16",
+    "datatables.net-dt": "^3.2.2"
+  }
+}

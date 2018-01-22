@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <!-- partial -->
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Edit Item ID : <?php echo $id; ?></h5>
+                <div class="form-group row">
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Asset No</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="Asset_No" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Device Type</label>
+                        <div class="col-8">
+                            <select class="form-control" >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="form-group row">
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Model</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="x-xxx-xxx" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Machine Type</label>
+                        <div class="col-8">
+                            <select class="form-control" >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="row col-12">
+                        <label for="example-url-input" class="col-2 col-form-label">Detail</label>
+                        <div class="col-10" style="padding-left: 10px;">
+                            <input class="form-control" type="url" value="Spec_HDD" id="example-url-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Serial No</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="Serial_No" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">OS</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="OS" id="example-text-input">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <h5 class="card-title mb-4">MA Detail ID: <?php echo $id; ?></h5>
+                <div class="form-group row">
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">MA Type</label>
+                        <div class="col-8">
+                            <select class="form-control" >
+                                <option>MA_Service_Type</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Start Date</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="MA_Start_Date" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">End Date</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="MA_End_Date" id="example-text-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="row col-12">
+                        <label for="example-url-input" class="col-2 col-form-label">Vendor</label>
+                        <div class="col-10" style="padding-left: 10px;">
+                            <input class="form-control" type="url" value="Vendor" id="example-url-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">PO No</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="MA_PO_No" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Contract No Date</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="MA_Contract_No" id="example-text-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="row col-12">
+                        <label for="example-url-input" class="col-2 col-form-label">PIC</label>
+                        <div class="col-10" style="padding-left: 10px;">
+                            <input class="form-control" type="url" value="xxxx-xxxx-xxx" id="example-url-input">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                
+                <h5 class="card-title mb-4">Location : <?php echo $id; ?></h5>
+                <div class="form-group row">
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Location</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="Location" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Rack No</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="Rack_No" id="example-text-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="row col-12">
+                        <label for="example-url-input" class="col-2 col-form-label">Customer</label>
+                        <div class="col-10" style="padding-left: 10px;">
+                            <input class="form-control" type="url" value="xxxx-xxxx-xxx" id="example-url-input">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <h5 class="card-title mb-4">Other Detail : <?php echo $id; ?></h5>
+                <div class="form-group row">
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Service</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="Service" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Project</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="Project_Code" id="example-text-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Purchased</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="Purchased_Date" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">PO</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="PO_No" id="example-text-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="row col-12">
+                        <label for="example-url-input" class="col-2 col-form-label">Remark</label>
+                        <div class="col-10" style="padding-left: 10px;">
+                            <input class="form-control" type="url" value="Remark" id="example-url-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Last Update</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="Last_Update" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <label for="example-text-input" class="col-4 col-form-label">Update by</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" value="Update_by" id="example-text-input">
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
