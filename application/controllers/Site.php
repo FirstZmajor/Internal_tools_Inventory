@@ -34,8 +34,8 @@ class Site extends CI_Controller {
 		$this->load->js('assets/themes/node_modules/popper.js/dist/umd/popper.min.js');
 		$this->load->js('assets/themes/node_modules/bootstrap/dist/js/bootstrap.min.js');
 		$this->load->js('assets/themes/node_modules/chart.js/dist/Chart.min.js');
-		// $this->load->js('assets/themes/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.js');
-		// $this->load->js('assets/themes/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.js');
+		$this->load->js('assets/themes/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.js');
+		$this->load->js('assets/themes/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.js');
 		$this->load->js('assets/themes/js/off-canvas.js');
 		$this->load->js('assets/themes/js/hoverable-collapse.js');
 		$this->load->js('assets/themes/js/misc.js');
@@ -58,9 +58,16 @@ class Site extends CI_Controller {
 	}
 
 	
-	public function edit_content()
+	public function edit_content($id)
 	{
 		// $this->output->unset_template();
-		$this->load->view('pages/update_item');
+		$data['id'] = $id;
+		$this->load->view('pages/update_item',$data);
+	}
+	
+	public function create_content()
+	{
+		// $this->output->unset_template();
+		$this->load->view('pages/create_item');
 	}
 }
