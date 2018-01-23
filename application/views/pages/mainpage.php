@@ -25,7 +25,7 @@
                             <th class="text-center">Asset No.</th>
                             <th class="text-center">HW-Code</th>
                             <th class="text-center">Warranty Expire</th>
-                            <th class="text-center">Check by</th>
+                            <th class="text-center">Update by</th>
                             <th class="text-center">Option</th>
                         </tr>
                     </thead>
@@ -40,7 +40,7 @@
                             <td>Pong Ju</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-outline-primary btn-sm view-item" data-id="1">View</button>
-                                <a href="<?php echo site_url('Site/edit_content/1'); ?>" class="btn btn-primary btn-sm">Manage</a>
+                                <a href="<?php echo site_url('Site/edit_content/1'); ?>" class="btn btn-primary btn-sm">Update</a>
                             </td>
                         </tr>
                         <tr class="">
@@ -53,7 +53,7 @@
                             <td>Pong Ju</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-outline-primary btn-sm view-item" data-id="2">View</button>
-                                <a href="<?php echo site_url('Site/edit_content/2'); ?>" class="btn btn-primary btn-sm">Manage</a>
+                                <a href="<?php echo site_url('Site/edit_content/2'); ?>" class="btn btn-primary btn-sm">Update</a>
                             </td>
                         </tr>
                     </tbody>
@@ -68,10 +68,15 @@
 
 </html>
 <script src="<?=base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js');?>"></script>
+<script src="<?=base_url('assets/bower_components/datatables.net-responsive/js/dataTables.responsive.js');?>"></script>
+<script src="<?=base_url('assets/bower_components/datatables.net-fixedcolumns/js/dataTables.fixedColumns.js');?>"></script>
+	
 <script>
     $(document).ready(function(){
         $('#example').DataTable({
           "paging": false,
+          responsive: true,
+          fixedColumns: true,
           dom:"<'row'<'col-sm-6 create-item'l><'col-sm-6'f>>"
         });
         
