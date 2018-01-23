@@ -22,6 +22,7 @@
     "datatables.net-responsive-dt": "^2.2.0",
     "datatables.net-responsive": "^2.2.0",
     "datatables.net": "^1.10.16",
-    "datatables.net-dt": "^3.2.2"
+    "datatables.net-dt": "^3.2.2",
+    "bootstrap-datepicker": "https://github.com/uxsolutions/bootstrap-datepicker.git"
   }
 }

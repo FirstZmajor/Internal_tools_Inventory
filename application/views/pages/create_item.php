@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php echo link_tag('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css'); ?>
+    <?php echo link_tag('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.css'); ?>
 <body>
     <!-- partial -->
     <div class="col-lg-12">
@@ -90,13 +92,13 @@
                     <div class="row col-6">
                         <label for="example-text-input" class="col-4 col-form-label">Start Date</label>
                         <div class="col-8">
-                            <input class="form-control" type="text">
+                            <input class="datepicker" data-date-format="mm/dd/yyyy">
                         </div>
                     </div>
                     <div class="row col-6">
                         <label for="example-text-input" class="col-4 col-form-label">End Date</label>
                         <div class="col-8">
-                            <input class="form-control" type="text">
+                            <input class="datepicker" data-date-format="mm/dd/yyyy">
                         </div>
                     </div>
                 </div>
@@ -218,3 +220,14 @@
 </body>
 
 </html>
+
+<script src="<?=base_url('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js');?>"></script>
+<script>
+    $(document).ready(function(){
+        $('.datepicker').datepicker({
+            format: 'mm/dd/yyyy'
+        });
+
+
+    });
+</script>
