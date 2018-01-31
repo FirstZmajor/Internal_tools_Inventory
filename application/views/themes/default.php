@@ -51,11 +51,12 @@
     <?php echo link_tag('assets/themes/css/style.css'); ?>
     <?php echo link_tag('assets/themes/node_modules/bootstrap/dist/css/bootstrap.min.css'); ?>
     <?php echo link_tag('assets/themes/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.css'); ?>
+    <?php echo link_tag('assets/themes/node_modules/font-awesome/css/font-awesome.css'); ?>
 
 
 </head>
 
-<body>
+<body class="sidebar-icon-only">
     
     <div class=" container-scroller">
         <!-- side navigation -->
