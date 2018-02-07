@@ -21,7 +21,10 @@ class Site extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper('url');
+		$this->load->model('Hardware_MA_Model');
+		$this->load->library('hardware_ma');
 		$this->_init();
+		
 	}
 
 	private function _init()
@@ -46,28 +49,71 @@ class Site extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('pages/mainpage');
+		// $data['count'] = $this->counting_expire($this->hardware_ma->get_list_hardware_ma());
+		$data['count'] = $this->hardware_ma->counting_expire();
+		$data['devices'] = $this->Hardware_MA_Model->select_count_device();
+		$data['location'] = $this->Hardware_MA_Model->select_count_location();
+		
+		$this->load->view('pages/dashboard',$data);
+	}
+	
+	public function main()
+	{
+		$data['HW_list'] = $this->hardware_ma->get_list_hardware_ma();
+		$this->load->view('pages/mainpage',$data);
 	}
 
 	public function view_content($id=null)
 	{
 		$this->output->unset_template();
-		$data['id'] = $id;
-		// print_r($data);
+		$data['obj_MA'] = $this->hardware_ma->get_hardware_ma($id);
 		$this->load->view('pages/content_item',$data);
 	}
-
 	
 	public function edit_content($id)
 	{
-		// $this->output->unset_template();
 		$data['id'] = $id;
+		$data['obj_MA'] = $this->Hardware_MA_Model->select_by_id($id);
+
 		$this->load->view('pages/update_item',$data);
 	}
 	
 	public function create_content()
 	{
-		// $this->output->unset_template();
 		$this->load->view('pages/create_item');
 	}
+
+	public function test2 ()
+	{
+		echo "<pre>";
+		$this->output->unset_template();
+		// $data = $this->hardware_ma->get_list_hardware_ma();
+		$data['count'] = $this->hardware_ma->counting_expire();
+		$data['devices'] = $this->Hardware_MA_Model->select_count_device();
+		$data['location'] = $this->Hardware_MA_Model->select_count_location();
+		print_r($data);
+		echo "</pre>";
+	}
+
+	public function chart_expire ()
+	{
+		// echo "<pre>";
+		$this->output->unset_template();
+		$count_expire = $this->hardware_ma->counting_expire();
+		$data['labels'] = array();
+		$data['datasets']['data'] = array();
+		$data['datasets']['backgroundColor'] = array('#dc3545', '#17a2b8', '#28a745', '#ffc107');
+		foreach ($count_expire as $key => $value) {
+			array_push($data['labels'],$key);
+			array_push($data['datasets']['data'],$value);
+		}
+		// print_r($data);
+		echo json_encode($data);
+		// echo "</pre>";
+	}
+
+
+
+
+
 }
