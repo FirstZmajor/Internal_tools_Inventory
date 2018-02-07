@@ -20,8 +20,46 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		// $this->load->view('welcome_message');
-
-		$this->load->view('mainpage');
+		$this->output->set_title('Home');
+		// $this->_init();
+		$this->load->view('login');
 	}
+
+	public function _login($errorMsg = NULL)
+	{
+			$this->_init_blank();
+	    if(!$this->auth_ldap->is_authenticated())
+			{
+	      // Set up rules for form validation
+	      $rules = $this->form_validation;
+	      $rules->set_rules('username', 'Username', 'required'); //alpha_dash
+	      $rules->set_rules('password', 'Password', 'required');
+	      // Do the login...
+	      if($rules->run() && $this->auth_ldap->login($rules->set_value('username'), $rules->set_value('password')))
+				{
+	        if($this->session->flashdata('tried_to'))
+					{
+	          redirect($this->session->flashdata('tried_to'));
+	        }
+					else
+					{
+	          redirect('Site');
+	        }
+	      }
+				else
+				{
+	        // Login FAIL
+		      $this->session->keep_flashdata('tried_to');
+					$this->load->view('login');
+	        // $this->load->view('themes/login', array('login_fail_msg'
+	        //                         => 'Error with LDAP authentication.'));
+	      }
+	    }
+			else
+			{
+	        // Already logged in...
+	        redirect('Site');
+	    }
+	}
+
 }

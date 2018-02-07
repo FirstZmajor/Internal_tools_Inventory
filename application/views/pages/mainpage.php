@@ -19,43 +19,28 @@
                     <table id="example" class="table table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr class="text-primary">
-                            <th class="text-center">No</th>
-                            <th class="text-center">Model</th>
+                            <th class="text-center">Hardware_id</th>
+                            <th class="text-center">Device_type</th>
                             <th class="text-center">Serial Number</th>
-                            <th class="text-center">Asset No.</th>
-                            <th class="text-center">HW-Code</th>
+                            <th class="text-center">Location</th>
                             <th class="text-center">Warranty Expire</th>
-                            <th class="text-center">Update by</th>
-                            <th class="text-center">Option</th>
+                            <th class="text-center"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="">
-                            <td>1</td>
-                            <td>Cisco 1721</td>
-                            <td>FHK093211RB</td>
-                            <td>6652</td>
-                            <td>-</td>
-                            <td class="text-center"><label class="badge badge-success">9/30/2013</label></td>
-                            <td>Pong Ju</td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-outline-primary btn-sm view-item" data-id="1">View</button>
-                                <a href="<?php echo site_url('Site/edit_content/1'); ?>" class="btn btn-primary btn-sm">Update</a>
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>2</td>
-                            <td>IBM x346</td>
-                            <td>FHK093211RB</td>
-                            <td>6652</td>
-                            <td>-</td>
-                            <td class="text-center"><label class="badge badge-success">10/26/2013</label></td>
-                            <td>Pong Ju</td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-outline-primary btn-sm view-item" data-id="2">View</button>
-                                <a href="<?php echo site_url('Site/edit_content/2'); ?>" class="btn btn-primary btn-sm">Update</a>
-                            </td>
-                        </tr>
+                        <?php foreach ($HW_list as $key => $value) { ?>
+                            <tr class="">
+                                <td><?php echo $value['Hardware_id']; ?></td>
+                                <td><?php echo $value['hardware_detail']->Hardware_Type ; ?></td>
+                                <td><?php echo $value['hardware_detail']->Serial_No ; ?></td>
+                                <td class="text-center"><?php echo $value['Location'] ; ?></td>
+                                <td class="text-center"><?php echo $value['tag_expire']['value_status'] ; ?></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-outline-primary btn-sm view-item" data-id="<?php echo $value['MA_id']; ?>">View</button>
+                                    <!-- <a href="<?php echo base_url('Site/edit_content/').$value['MA_id']; ?>" class="btn btn-primary btn-sm">Update</a> -->
+                                </td> 
+                            </tr>
+                        <?php }?>
                     </tbody>
                     </table>
                 </div>
@@ -80,14 +65,14 @@
           dom:"<'row'<'col-sm-6 create-item'l><'col-sm-6'f>>"
         });
         
-        var button_create = '<a href="<?php echo site_url('Site/create_content');?>" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Create item</a>'; 
-        $('.create-item').append(button_create);
+        var button_create = '<a href="<?php echo base_url('Site/create_content');?>" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Create item</a>'; 
+        // $('.create-item').append(button_create);
 
         $(".view-item").click(function(){
         console.log($(this).data('id'));
         var item_id = $(this).data('id');
         $.ajax({
-            url: "<?php echo site_url('Site/view_content');?>/"+item_id,
+            url: "<?php echo base_url('Site/view_content');?>/"+item_id,
             success: function(result){
             $(".modal-container").html(result);
             $('#myModal').modal({
