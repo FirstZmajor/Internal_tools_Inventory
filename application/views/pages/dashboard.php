@@ -16,7 +16,7 @@
             </div>
                 </div>
                 <p class="text-muted">
-            <i class="fa fa-exclamation-circle mr-1" aria-hidden="true"></i> lower growth
+                    <i class="fa fa-exclamation-circle mr-1" aria-hidden="true"></i> lower growth
                 </p>
             </div>
             </div>
@@ -36,7 +36,7 @@
             </div>
                 </div>
                 <p class="text-muted">
-            <i class="fa fa-bookmark-o mr-1" aria-hidden="true"></i> Product-wise sales
+                    <i class="fa fa-bookmark-o mr-1" aria-hidden="true"></i> Product-wise sales
                 </p>
             </div>
             </div>
@@ -76,7 +76,7 @@
             </div>
                 </div>
                 <p class="text-muted">
-            <i class="fa fa-calendar mr-1" aria-hidden="true"></i> Weekly Sales
+                    <i class="fa fa-calendar mr-1" aria-hidden="true"></i> Weekly Sales
                 </p>
             </div>
             </div>
@@ -88,9 +88,8 @@
             <div class="card-body">
                 <h5 class="card-title">Total Hardware</h5>
                 <div class="custom-legend-container w-75 mx-auto">
-                <canvas id="sales-chart"></canvas>
+                <canvas id="myChart" width="400" height="400"></canvas>
                 </div>
-                <div id="sales-chart-legend" class="legend-right"></div>
             </div>
             </div>
         </div>
@@ -110,7 +109,7 @@
                             <?php foreach ($devices as $key => $value) { ?>
                                 <tr>
                                     <td>
-                                        <?php echo ($value['Device_Type'] != '') ? $value['Device_Type'] : "Unknown"; ?>
+                                        <?php echo ($value['Hardware_Type'] != '') ? $value['Hardware_Type'] : "Unknown"; ?>
                                     </td>
                                     <td class="text-right"><?php echo $value['total']; ?></td> 
                                 </tr>
@@ -151,3 +150,34 @@
             </div>
         </div>
     </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){ 
+  
+        $.ajax({
+            url: "/Site/chart_expire",
+            dataType: 'json',
+        })
+        .done(function( json ) {
+            // alert(json);
+            console.log(json); 
+            var result = json;          
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: result.labels,
+                    datasets: [{
+                        data: result.datasets.data,
+                        backgroundColor: result.datasets.backgroundColor,
+                    }]
+                }
+            });
+        });
+
+
+    });
+
+
+
+</script>

@@ -49,7 +49,8 @@ class Site extends CI_Controller {
 	
 	public function index()
 	{
-		$data['count'] = $this->counting_expire($this->hardware_ma->get_list_hardware());
+		// $data['count'] = $this->counting_expire($this->hardware_ma->get_list_hardware_ma());
+		$data['count'] = $this->hardware_ma->counting_expire();
 		$data['devices'] = $this->Hardware_MA_Model->select_count_device();
 		$data['location'] = $this->Hardware_MA_Model->select_count_location();
 		
@@ -58,14 +59,14 @@ class Site extends CI_Controller {
 	
 	public function main()
 	{
-		$data['HW_list'] = $this->hardware_ma->get_list_hardware();
+		$data['HW_list'] = $this->hardware_ma->get_list_hardware_ma();
 		$this->load->view('pages/mainpage',$data);
 	}
 
 	public function view_content($id=null)
 	{
 		$this->output->unset_template();
-		$data['obj_MA'] = $this->Hardware_MA_Model->select_by_id($id);
+		$data['obj_MA'] = $this->hardware_ma->get_hardware_ma($id);
 		$this->load->view('pages/content_item',$data);
 	}
 	
@@ -82,44 +83,33 @@ class Site extends CI_Controller {
 		$this->load->view('pages/create_item');
 	}
 
-	public function counting_expire ($list_item)
+	public function test2 ()
 	{
-		$expired = 1;
-		$expire_soon = 1;
-		$active = 1;
-		$unknown = 1;
-		foreach ($list_item as $key => $value) {
-			$status = $value['tag_expire']['key_status'];
-			switch ($status) {
-				case 'Expired':
-					$output['Expired'] = $expired++;
-					break;
-				case 'Expire_Soon':
-					$output['Expire_Soon']= $expire_soon++;
-					break;
-				case 'Active':
-					$output['Active'] = $active++;
-					break;
-				case 'Unknown':
-					$output['unknown'] = $unknown++;
-					break;
-			}
-		}
-		return $output;
+		echo "<pre>";
+		$this->output->unset_template();
+		// $data = $this->hardware_ma->get_list_hardware_ma();
+		$data['count'] = $this->hardware_ma->counting_expire();
+		$data['devices'] = $this->Hardware_MA_Model->select_count_device();
+		$data['location'] = $this->Hardware_MA_Model->select_count_location();
+		print_r($data);
+		echo "</pre>";
 	}
 
-	public function test()
+	public function chart_expire ()
 	{
+		// echo "<pre>";
 		$this->output->unset_template();
-		
-		
-		$data['location'] = $this->Hardware_MA_Model->select_count_location();
-
-
-		echo "<pre>";
-		
-		print_r($data['location']);
-		echo "</pre>";
+		$count_expire = $this->hardware_ma->counting_expire();
+		$data['labels'] = array();
+		$data['datasets']['data'] = array();
+		$data['datasets']['backgroundColor'] = array('#dc3545', '#17a2b8', '#28a745', '#ffc107');
+		foreach ($count_expire as $key => $value) {
+			array_push($data['labels'],$key);
+			array_push($data['datasets']['data'],$value);
+		}
+		// print_r($data);
+		echo json_encode($data);
+		// echo "</pre>";
 	}
 
 
