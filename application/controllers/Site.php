@@ -57,8 +57,9 @@ class Site extends CI_Controller {
 		$this->load->view('pages/dashboard',$data);
 	}
 	
-	public function main()
+	public function main($selector=null)
 	{
+		$data['selector'] = $selector;
 		$data['HW_list'] = $this->hardware_ma->get_list_hardware_ma();
 		$this->load->view('pages/mainpage',$data);
 	}
@@ -70,12 +71,34 @@ class Site extends CI_Controller {
 		$this->load->view('pages/content_item',$data);
 	}
 	
-	public function edit_content($id)
+	public function edit_content($id=null)
 	{
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
 		$data['id'] = $id;
-		$data['obj_MA'] = $this->Hardware_MA_Model->select_by_id($id);
+		$data['obj_MA'] = $this->hardware_ma->get_hardware_ma($id);
+		$config = array(
+                array(
+                        'field' => 'Other_Remark',
+                        'label' => 'Remark',
+                        'rules' => 'required'
+                )
+        );
+		$this->form_validation->set_rules($config);
+		if ($this->form_validation->run() == FALSE)
+        {
+			$data['obj_MA'] = $this->hardware_ma->get_hardware_ma($id);
+			$this->load->view('pages/update_item',$data);
+		}
+		else
+		{
+            $data_update = new stdClass();
+			$data_update->Remark = $this->input->post('Other_Remark');
 
-		$this->load->view('pages/update_item',$data);
+			$this->Hardware_MA_Model->update($data_update,'HW00000120');
+
+		}
+
 	}
 	
 	public function create_content()
@@ -87,17 +110,13 @@ class Site extends CI_Controller {
 	{
 		echo "<pre>";
 		$this->output->unset_template();
-		// $data = $this->hardware_ma->get_list_hardware_ma();
-		$data['count'] = $this->hardware_ma->counting_expire();
-		$data['devices'] = $this->Hardware_MA_Model->select_count_device();
-		$data['location'] = $this->Hardware_MA_Model->select_count_location();
+		$data = $this->Hardware_MA_Model->select_list_hardware_ma();
 		print_r($data);
 		echo "</pre>";
 	}
 
 	public function chart_expire ()
 	{
-		// echo "<pre>";
 		$this->output->unset_template();
 		$count_expire = $this->hardware_ma->counting_expire();
 		$data['labels'] = array();
@@ -107,9 +126,7 @@ class Site extends CI_Controller {
 			array_push($data['labels'],$key);
 			array_push($data['datasets']['data'],$value);
 		}
-		// print_r($data);
 		echo json_encode($data);
-		// echo "</pre>";
 	}
 
 
