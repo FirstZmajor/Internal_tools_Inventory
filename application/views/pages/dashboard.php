@@ -3,82 +3,78 @@
     <div class="row">
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
             <div class="card card-statistics">
-            <div class="card-body">
-                <div class="clearfix">
-            <div class="float-left">
-            <h4 class="text-success">
-                <i class="fa fa-calendar-check-o highlight-icon" aria-hidden="true"></i>
-            </h4>
-            </div>
-            <div class="float-right">
-            <p class="card-text text-dark">Active</p>
-            <h4 class="bold-text"><?php echo $count['Active'];?></h4>
-            </div>
+            <a href="<?php echo base_url('Site/main/Active');?>">
+                <div class="card-body">
+                    <div class="clearfix">
+                        <div class="float-left">
+                        <h4 class="text-success">
+                            <i class="fa fa-calendar-check-o highlight-icon" aria-hidden="true"></i>
+                        </h4>
+                        </div>
+                        <div class="float-right">
+                        <p class="card-text text-dark">Active</p>
+                        <h4 class="bold-text"><?php echo $count['Active'];?></h4>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-muted">
-                    <i class="fa fa-exclamation-circle mr-1" aria-hidden="true"></i> lower growth
-                </p>
-            </div>
+            </a>
             </div>
         </div>
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
             <div class="card card-statistics">
-            <div class="card-body">
-                <div class="clearfix">
-            <div class="float-left">
-            <h4 class="text-warning">
-                <i class="fa fa-flag highlight-icon" aria-hidden="true"></i>
-            </h4>
-            </div>
-            <div class="float-right">
-            <p class="card-text text-dark">Expire soon</p>
-            <h4 class="bold-text"><?php echo $count['Expire_Soon'];?></h4>
-            </div>
+            <a href="<?php echo base_url('Site/main/Expire_Soon');?>">
+                <div class="card-body">
+                    <div class="clearfix">
+                        <div class="float-left">
+                        <h4 class="text-warning">
+                            <i class="fa fa-flag highlight-icon" aria-hidden="true"></i>
+                        </h4>
+                        </div>
+                        <div class="float-right">
+                        <p class="card-text text-dark">Expire soon</p>
+                        <h4 class="bold-text"><?php echo $count['Expire_Soon'];?></h4>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-muted">
-                    <i class="fa fa-bookmark-o mr-1" aria-hidden="true"></i> Product-wise sales
-                </p>
-            </div>
+            </a>
             </div>
         </div>
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
             <div class="card card-statistics">
-            <div class="card-body">
-                <div class="clearfix">
-            <div class="float-left">
-            <h4 class="text-danger">
-                <i class="fa fa-exclamation-triangle highlight-icon" aria-hidden="true"></i>
-            </h4>
-            </div>
-            <div class="float-right">
-            <p class="card-text text-dark">Expired</p>
-            <h4 class="bold-text"><?php echo $count['Expired'];?></h4>
-            </div>
+            <a href="<?php echo base_url('Site/main/Expired');?>">
+                <div class="card-body">
+                    <div class="clearfix">
+                        <div class="float-left">
+                        <h4 class="text-danger">
+                            <i class="fa fa-exclamation-triangle highlight-icon" aria-hidden="true"></i>
+                        </h4>
+                        </div>
+                        <div class="float-right">
+                        <p class="card-text text-dark">Expired</p>
+                        <h4 class="bold-text"><?php echo $count['Expired'];?></h4>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-muted">
-            <i class="fa fa-calendar mr-1" aria-hidden="true"></i> Weekly Sales
-                </p>
-            </div>
+            </a>
             </div>
         </div>
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
             <div class="card card-statistics">
-            <div class="card-body">
-                <div class="clearfix">
-            <div class="float-left">
-            <h4 class="text-info">
-                <i class="fa fa-question-circle highlight-icon" aria-hidden="true"></i>
-            </h4>
-            </div>
-            <div class="float-right">
-            <p class="card-text text-dark">Unknown</p>
-            <h4 class="bold-text"><?php echo $count['unknown'];?></h4>
-            </div>
+            <a href="<?php echo base_url('Site/main/Not_found');?>">
+                <div class="card-body">
+                    <div class="clearfix">
+                        <div class="float-left">
+                        <h4 class="text-info">
+                            <i class="fa fa-question-circle highlight-icon" aria-hidden="true"></i>
+                        </h4>
+                        </div>
+                        <div class="float-right">
+                        <p class="card-text text-dark">Unknown</p>
+                        <h4 class="bold-text"><?php echo $count['unknown'];?></h4>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-muted">
-                    <i class="fa fa-calendar mr-1" aria-hidden="true"></i> Weekly Sales
-                </p>
-            </div>
+            </a>
             </div>
         </div>
     </div>
@@ -152,6 +148,29 @@
     </div>
 
 <script type="text/javascript">
+    function select_MA_Status (state)
+    {
+      if (state=='UP')
+      {
+        result_state = 'hostUP';
+      }
+      else if (state=='DOWN')
+      {
+        result_state = 'hostDOWN';
+      }
+      else if (state=='UNREACHABLE')
+      {
+        result_state = 'hostUNREACHABLE';
+      }
+      else if (state=='PENDING')
+      {
+        result_state = 'hostPENDING';
+      }
+      table
+          .search( result_state )
+          .draw();
+    }
+
     $(document).ready(function(){ 
   
         $.ajax({

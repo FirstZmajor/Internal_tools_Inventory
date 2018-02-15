@@ -9,18 +9,7 @@ class Hardware_MA_Model extends CI_Model {
 		$this->db_conn->trans_strict(FALSE);
 	}
 
-	public function select_by_id($selector)
-  	{
-  		$this->db_conn->where('MA_ID',$selector);
-		$result = $this->db_conn->get($this->name_table)->row_object();
-		return $result;
-	}
-	
-	public function select_list()
-  	{
-		$result = $this->db_conn->get($this->name_table)->result_array();
-		return $result;
-	}
+	// ============ Select ===========
 
 	public function select_count_device ()
 	{
@@ -39,16 +28,13 @@ class Hardware_MA_Model extends CI_Model {
 		$result = $this->db_conn->get('Hardware_MA')->result_array();
 		return $result;
 	}
-
-	// ============ New Table ===========
-
 		
 	public function select_list_hardware_ma ()
 	{
-		$this->db_conn->join('Hardware', 'Hardware_MA.Hardware_id = Hardware.Hardware_id', 'left');
-		$this->db_conn->join('Hardware_MA_Type', 'Hardware_MA.MA_type_id = Hardware_MA_Type.MA_type_id', 'left');
-		$this->db_conn->join('Hardware_MA_Location', 'Hardware_MA.Location_id = Hardware_MA_Location.Location_id', 'left');
-		$this->db_conn->join('Hardware_MA_Vendor', 'Hardware_MA.Vendor_id = Hardware_MA_Vendor.Vendor_id', 'left');
+		// $this->db_conn->join('Hardware', 'Hardware_MA.Hardware_id = Hardware.Hardware_id', 'left');
+		// $this->db_conn->join('Hardware_MA_Type', 'Hardware_MA.MA_type_id = Hardware_MA_Type.MA_type_id', 'left');
+		// $this->db_conn->join('Hardware_MA_Location', 'Hardware_MA.Location_id = Hardware_MA_Location.Location_id', 'left');
+		// $this->db_conn->join('Hardware_MA_Vendor', 'Hardware_MA.Vendor_id = Hardware_MA_Vendor.Vendor_id', 'left');
 		$result = $this->db_conn->get('Hardware_MA')->result_array();
 		return $result;
 	}
@@ -73,6 +59,36 @@ class Hardware_MA_Model extends CI_Model {
 		return $result;
 	}
 
+
+	public function update($params, $where)
+	{
+
+		if(isset($where) && count($where)>0)
+		{
+			$this->db_conn->trans_begin();
+			foreach($where as $key=>$value)
+			{
+					$this->db_conn->where($key, $value);
+			}
+			$this->db_conn->update("Hardware", $params);
+			if ($this->db_conn->trans_status() === FALSE)
+			{		$v = $this->db_conn->error();
+					log_error($v['message']);
+					$this->db_conn->trans_rollback();
+					return false;
+			}
+			else
+			{
+					$this->set_message('update complete');
+					$this->db_conn->trans_commit();
+					return true;
+			}
+		}
+		log_error("don't have condition");
+		$this->db_conn->trans_rollback();
+		return false;
+
+	}
 
 
 	

@@ -28,14 +28,14 @@ class hardware_ma {
     public function get_list_hardware_ma ()
     {
         $arr_HW = $this->CI->Hardware_MA_Model->select_list_hardware_ma();
-        $list_item = array();
-        foreach ($arr_HW as $key => $object_MA) {
-            $object_MA['hardware_detail'] = $this->CI->Hardware_MA_Model->select_hardware_by_id($object_MA['Hardware_id']);
-            $object_MA['tag_expire'] = $this->calculation_expire($object_MA['Expire_Date']);
-            array_push($list_item,$object_MA);
-        }
+        // $list_item = array();
+        // foreach ($arr_HW as $key => $object_MA) {
+        //     $object_MA['hardware_detail'] = $this->CI->Hardware_MA_Model->select_hardware_by_id($object_MA['Hardware_id']);
+        //     $object_MA['tag_expire'] = $this->calculation_expire($object_MA['Expire_Date']);
+        //     array_push($list_item,$object_MA);
+        // }
     
-        return $list_item;
+        return $arr_HW;
     }
 
     public function get_hardware_ma ($MA_id)
@@ -109,9 +109,6 @@ class hardware_ma {
 		return $output;
 	}
 
-    public function counting_location ()
-    {
-        # code...
-    }
+
     
 }
